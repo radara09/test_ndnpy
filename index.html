@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Firestore Database Example</title>
+</head>
+<body>
+    <h1>Daftar Pengguna</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Nama</th>
+            <th>Email</th>
+        </tr>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.to_dict().name }}</td>
+            <td>{{ user.to_dict().email }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <h2>Tambah Pengguna Baru</h2>
+    <form action="/add" method="POST">
+        <label for="name">Nama:</label>
+        <input type="text" id="name" name="name" required>
+        <br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <br>
+        <button type="submit">Tambah Pengguna</button>
+    </form>
+    <br>
+    <h2>Perbarui Pengguna</h2>
+    <form action="/update" method="POST">
+        <label for="doc_id">ID Pengguna:</label>
+        <input type="text" id="doc_id"
